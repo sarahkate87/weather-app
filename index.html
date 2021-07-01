@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/90d87a7363.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card mt-5 p-2 p-md-4 main-container">
+        <div class="card-body">
+          <form class="input-group" id="update-search">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Change location"
+              id="inputted-city"
+            />
+            <input
+              class="btn btn-outline-secondary"
+              type="submit"
+              value="Update"
+            >
+          </input>
+            <button class="btn btn-outline-secondary" type="button" id="geolocation">
+              <i class="fas fa-map-marker-alt"></i>
+            </button>
+          </form>
+          <div class="row weather mt-4 mt-md-5">
+            <div class="col-12 col-md-6 col-lg-5 current-weather border-end">
+              <div class="d-flex justify-content-start city-refresh">
+                <h1 class="city me-2"><span id="current-city"></span>, <span id="country-code"></span></h1>
+                <i class="fas fa-sync-alt btn-refresh"></i>
+              </div>
+              <h4 class="date-time pb-3">
+                <strong id="todays-date"></strong>
+                <span class="time" id="current-time"></span>
+              </h4>
+              <div class="d-flex justify-content-start mt-5 temp">
+                <img
+                  src="images/cloudy.svg"
+                  alt="Cloudy"
+                  class="icn-current-weather me-4"
+                />
+                <div class="float-start me-4">
+                  <h2 class="current-temp"><span id="current-temp"></span>°C</h2>
+                  <h4 class="current-condition" id="description">Cloudy</h4>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn-degrees"
+                  id="celsius-fahrenheit-btn"
+                >
+                  <span id="unit-switch-value">°F</span>
+                </button>
+              </div>
+            </div>
+            <div class="col weather-conditions">
+              <div class="row align-items-start pb-2">
+                <div class="col">
+                  <img src="images/high-temp.svg" alt="" class="icn-small" />
+                </div>
+                <div class="col">
+                  <img src="images/wind.svg" alt="" class="icn-xsmall" />
+                </div>
+                <div class="col">
+                  <img src="images/sunrise.svg" alt="" class="icn-xsmall" />
+                </div>
+              </div>
+              <div class="row align-items-start mb-5">
+                <div class="col rain-wind">
+                  <h4><span id="high-temp"></span>°</h4>
+                  <p>High</p>
+                </div>
+                <div class="col rain-wind">
+                  <h4><span id="wind-speed">8</span>m/s</h4>
+                  <p>Wind</p>
+                </div>
+                <div class="col rain-wind">
+                  <h4><span id="sunrise">05:06</span></h4>
+                  <p>Sunrise</p>
+                </div>
+              </div>
+              <div class="row align-items-start mt-5 pb-2">
+                <div class="col">
+                  <img src="images/low-temp.svg" alt="" class="icn-small" />
+                </div>
+                <div class="col">
+                  <img src="images/rain.svg" alt="" class="icn-small" />
+                </div>
+                <div class="col">
+                  <img src="images/sunset.svg" alt="" class="icn-xsmall" />
+                </div>
+              </div>
+              <div class="row align-items-start">
+                <div class="col rain-wind">
+                  <h4><span id="low-temp"></span>°</h4>
+                  <p>Low</p>
+                </div>
+                <div class="col rain-wind">
+                  <h4>10%</h4>
+                  <p>Rain</p>
+                </div>
+                <div class="col rain-wind">
+                  <h4>21:06</h4>
+                  <p>Sunset</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br />
+          <h4 class="forecast-title">Forecast</h4>
+          <div class="card mt-3 p-1">
+            <div class="card-body">
+              <div class="row align-items-start forecast">
+                <div class="col">
+                  <h4 class="forecast-days">Fri</h4>
+                </div>
+                <div class="col">
+                  <h4 class="forecast-days">Sat</h4>
+                </div>
+                <div class="col">
+                  <h4 class="forecast-days">Sun</h4>
+                </div>
+                <div class="col">
+                  <h4 class="forecast-days">Mon</h4>
+                </div>
+                <div class="col">
+                  <h4 class="forecast-days">Tues</h4>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col">
+                  <img src="images/showers.svg" alt="" class="icn-forecast" />
+                </div>
+                <div class="col">
+                  <img
+                    src="images/sunny-showers.svg"
+                    alt=""
+                    class="icn-forecast"
+                  />
+                </div>
+                <div class="col">
+                  <img src="images/sun-cloud.svg" alt="" class="icn-forecast" />
+                </div>
+                <div class="col">
+                  <img src="images/sun-cloud.svg" alt="" class="icn-forecast" />
+                </div>
+                <div class="col">
+                  <img src="images/sun-cloud.svg" alt="" class="icn-forecast" />
+                </div>
+              </div>
+              <div class="row align-items-end">
+                <div class="col forecast">
+                  <p class="low-temp">
+                    <strong class="high-temp">11°</strong>6°
+                  </p>
+                </div>
+                <div class="col forecast">
+                  <p class="low-temp">
+                    <strong class="high-temp">11°</strong>6°
+                  </p>
+                </div>
+                <div class="col forecast">
+                  <p class="low-temp">
+                    <strong class="high-temp">11°</strong>6°
+                  </p>
+                </div>
+                <div class="col forecast">
+                  <p class="low-temp">
+                    <strong class="high-temp">11°</strong>6°
+                  </p>
+                </div>
+                <div class="col forecast">
+                  <p class="low-temp">
+                    <strong class="high-temp">11°</strong>6°
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>

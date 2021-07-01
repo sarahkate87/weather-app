@@ -1,0 +1,175 @@
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+button,
+.form-control {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 38px;
+}
+.weather {
+  margin: 20px 0;
+  align-items: center;
+  height: fit-content;
+}
+.city,
+.date-time,
+.weather-conditions {
+  align-self: center;
+}
+
+.main-container {
+  display: block;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+/* Icon Styling - Start */
+.icn-current-weather,
+.icn-forecast {
+  display: block;
+  margin: auto 0;
+}
+.icn-small,
+.icn-xsmall {
+  display: block;
+  margin: 0 auto;
+}
+
+.icn-current-weather {
+  height: 60px;
+}
+
+.icn-small {
+  height: 25px;
+}
+.icn-xsmall {
+  height: 20px;
+}
+
+.icn-forecast {
+  margin: 20px auto;
+  max-width: 50%;
+}
+
+/* Icon Styling - End */
+
+/* Button Styling - Start */
+.btn-refresh {
+  font-size: 18px;
+  cursor: pointer;
+  padding-top: 12px;
+}
+
+.btn-degrees {
+  font-size: 10px;
+  padding: 3px 5px;
+  border-radius: 3px;
+  height: fit-content;
+}
+
+/* Button Styling - End */
+
+/* Text Styling - Start */
+p.low-temp {
+  font-weight: 200;
+}
+strong.high-temp {
+  font-weight: 700;
+  padding-right: 5px;
+}
+
+.rain-wind,
+.forecast {
+  text-align: center;
+  line-height: 20px;
+}
+
+.forecast-days,
+.forecast-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.current-temp {
+  font-size: 36px;
+}
+
+.current-condition {
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.rain-wind h4 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.rain-wind p {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+}
+
+.city,
+.current-temp,
+.date-time strong {
+  font-weight: 700;
+}
+
+.date-time {
+  text-align: left;
+}
+
+.time {
+  font-weight: 300;
+  font-size: 22px;
+}
+
+.city {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .border-end {
+    border-right: none !important;
+    border-bottom: 1px solid #dee2e6;
+  }
+  .city-refresh {
+    justify-content: center !important;
+  }
+  .current-weather {
+    padding-top: 10px;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+
+  .temp {
+    justify-content: space-evenly !important;
+    margin: 20px 50px 10px !important;
+  }
+
+  .weather-conditions {
+    padding: 40px 30px 0px;
+  }
+
+  .icn-forecast {
+    max-width: 70%;
+  }
+  .date-time {
+    text-align: center;
+  }
+}
