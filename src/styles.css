@@ -143,6 +143,11 @@ strong.high-temp {
   display: inline;
 }
 
+.footer-link {
+  text-align: center;
+  padding-top: 20px;
+}
+
 @media (max-width: 768px) {
   .border-end {
     border-right: none !important;
